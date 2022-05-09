@@ -6,6 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import {Button, TextField} from "@mui/material";
 import {FormEventHandler, useState} from "react";
+import {DateTimePicker} from "@mui/x-date-pickers";
 
 
 
@@ -24,7 +25,8 @@ export  function ButtonAppBar() {
 }
 
 export default function App() {
-    const [text,setText] = useState("")
+    const [text,setText] = useState("");
+    const [value, setValue] = React.useState<Date | null>(new Date());
     const handleSubmit:FormEventHandler<HTMLFormElement> = (e ) => {
         e.preventDefault();
         // @ts-ignore
@@ -40,23 +42,24 @@ export default function App() {
         setText(date_text)
 
     }
+
+
+
+  const handleChange = (newValue: Date | null) => {
+    setValue(newValue);
+  };
   return (<>
   <ButtonAppBar/>
     <Container maxWidth="sm">
       <Box sx={{ my: 4 }}>
 
         <form onSubmit={handleSubmit}>
-           <TextField
-        id="date"
+            <DateTimePicker
+                 inputFormat={"dd/MM/yyyy hh:mm"}
         label="זמן קבלת הגימל"
-        type="datetime-local"
-        sx={{ width: 250 }}
-        InputLabelProps={{
-          shrink: true,
-        }}
-        name={"date"}
-        required
-      />
+          onChange={handleChange}
+          renderInput={(params) => <TextField required name={"date"} id={"date"} {...params} />}
+         value={value}/>
           <Button type={"submit"} variant={"contained"} style={{marginRight:"10px"}}>חשב</Button>
         </form>
           <h1>{text}</h1>

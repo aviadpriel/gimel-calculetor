@@ -5,6 +5,8 @@ import App from './App';
 import { ThemeProvider } from '@mui/material/styles';
 import reportWebVitals from './reportWebVitals';
 import theme from './theme';
+import {LocalizationProvider} from "@mui/x-date-pickers";
+import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -15,9 +17,12 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <ThemeProvider theme={theme}>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+
     {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
     <CssBaseline />
     <App />
+          </LocalizationProvider>
   </ThemeProvider>,
 );
 
