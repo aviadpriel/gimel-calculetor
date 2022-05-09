@@ -55,7 +55,7 @@ export default function App() {
 
         <form onSubmit={handleSubmit}>
             <DateTimePicker
-                 inputFormat={"DD/MM/YYYY hh:mm a"}
+                 inputFormat={"DD/MM/YYYY HH:mm"}
         label="זמן קבלת הגימל"
           onChange={handleChange}
           renderInput={(params) => <TextField required name={"date"} id={"date"} {...params} />}
