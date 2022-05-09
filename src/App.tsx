@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import {Button, TextField} from "@mui/material";
 import {FormEventHandler, useState} from "react";
 import {DateTimePicker} from "@mui/x-date-pickers";
-
+import * as dayjs from 'dayjs'
 
 
 export  function ButtonAppBar() {
@@ -26,13 +26,13 @@ export  function ButtonAppBar() {
 
 export default function App() {
     const [text,setText] = useState("");
-    const [value, setValue] = React.useState<Date | null>(new Date());
+    const [value, setValue] = React.useState<dayjs.Dayjs | null>(dayjs.default());
     const handleSubmit:FormEventHandler<HTMLFormElement> = (e ) => {
         e.preventDefault();
         // @ts-ignore
         window.aaa = e.target.date;
         // @ts-ignore
-        let date = new Date(e.target.date.value);
+        let date =value?.toDate() as Date;
         const days_to_add = date.getHours() < 8 ? 1 : 2;
         date.setDate(date.getDate() + days_to_add);
         date.setHours(8);
@@ -45,7 +45,7 @@ export default function App() {
 
 
 
-  const handleChange = (newValue: Date | null) => {
+  const handleChange = (newValue: dayjs.Dayjs | null) => {
     setValue(newValue);
   };
   return (<>
@@ -55,7 +55,7 @@ export default function App() {
 
         <form onSubmit={handleSubmit}>
             <DateTimePicker
-                 inputFormat={"dd/MM/yyyy hh:mm"}
+                 inputFormat={"DD/MM/YYYY hh:mm a"}
         label="זמן קבלת הגימל"
           onChange={handleChange}
           renderInput={(params) => <TextField required name={"date"} id={"date"} {...params} />}
