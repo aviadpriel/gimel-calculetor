@@ -56,7 +56,8 @@ export default function App() {
                  inputFormat={"DD/MM/YYYY HH:mm"}
         label="זמן קבלת הגימל"
           onChange={handleChange}
-          renderInput={(params) => <TextField required name={"date"} id={"date"} {...params} />}
+          renderInput={(params) => <TextField style={{margin:"10px"}}
+ required name={"date"} id={"date"} {...params} />}
          value={value}/>
             <TextField
           id="days"
@@ -65,11 +66,13 @@ export default function App() {
           InputLabelProps={{
             shrink: true,
           }}
+style={{margin:"10px"}}
           required
           name={"days"}
           defaultValue={1}
           inputProps={{
               "min":1,
+
           }}
         />
           <Button type={"submit"} variant={"contained"} style={{marginRight:"10px"}}>חשב</Button>
