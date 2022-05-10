@@ -16,7 +16,7 @@ export  function ButtonAppBar() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" >
-            מחשבון גימלים
+            מחשבון גימלים v2
           </Typography>
         </Toolbar>
       </AppBar>
@@ -29,11 +29,9 @@ export default function App() {
     const [value, setValue] = React.useState<dayjs.Dayjs | null>(dayjs.default());
     const handleSubmit:FormEventHandler<HTMLFormElement> = (e ) => {
         e.preventDefault();
-        // @ts-ignore
-        window.aaa = e.target.date;
-        // @ts-ignore
         let date =value?.toDate() as Date;
-        const days_to_add = date.getHours() < 8 ? 1 : 2;
+        // @ts-ignore
+        const days_to_add = (date.getHours() < 8 ? 1 : 2) + (e.target.days.value - 1);
         date.setDate(date.getDate() + days_to_add);
         date.setHours(8);
         date.setSeconds(0);
@@ -60,6 +58,20 @@ export default function App() {
           onChange={handleChange}
           renderInput={(params) => <TextField required name={"date"} id={"date"} {...params} />}
          value={value}/>
+            <TextField
+          id="days"
+          label="כמה ימים החייל קיבל"
+          type="number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          required
+          name={"days"}
+          defaultValue={1}
+          inputProps={{
+              "min":1,
+          }}
+        />
           <Button type={"submit"} variant={"contained"} style={{marginRight:"10px"}}>חשב</Button>
         </form>
           <h1>{text}</h1>
