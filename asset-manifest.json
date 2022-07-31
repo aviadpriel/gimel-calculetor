@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/gimel-calculetor/static/js/main.fc501d49.js",
+    "main.js": "/gimel-calculetor/static/js/main.e096e8d5.js",
     "static/js/787.02567465.chunk.js": "/gimel-calculetor/static/js/787.02567465.chunk.js",
     "index.html": "/gimel-calculetor/index.html",
-    "main.fc501d49.js.map": "/gimel-calculetor/static/js/main.fc501d49.js.map",
+    "main.e096e8d5.js.map": "/gimel-calculetor/static/js/main.e096e8d5.js.map",
     "787.02567465.chunk.js.map": "/gimel-calculetor/static/js/787.02567465.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.fc501d49.js"
+    "static/js/main.e096e8d5.js"
   ]
 }
